@@ -109,16 +109,16 @@ interface PricingCardProps {
 }
 
 function PricingCard({
-  title,
-  price,
-  period = 'per month',
-  description,
-  features,
-  buttonText,
-  buttonLink,
-  highlighted = false,
-  badge,
-}: PricingCardProps) {
+                       title,
+                       price,
+                       period = 'per month',
+                       description,
+                       features,
+                       buttonText,
+                       buttonLink,
+                       highlighted = false,
+                       badge,
+                     }: PricingCardProps) {
   return (
     <div
       className={`rounded-lg p-6 ${

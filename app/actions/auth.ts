@@ -39,6 +39,8 @@ export type ActionResponse = {
   error?: string
 }
 
+
+//....
 export async function signIn(formData: FormData): Promise<ActionResponse> {
   try {
     // Add a small delay to simulate network latency
@@ -60,7 +62,7 @@ export async function signIn(formData: FormData): Promise<ActionResponse> {
       }
     }
 
-    // Find user by email
+    // Find the user by email
     const user = await getUserByEmail(data.email)
     if (!user) {
       return {
@@ -123,7 +125,7 @@ export async function signUp(formData: FormData): Promise<ActionResponse> {
       }
     }
 
-    // Check if user already exists
+    // Check if a user already exists
     const existingUser = await getUserByEmail(data.email)
     if (existingUser) {
       return {
@@ -135,7 +137,7 @@ export async function signUp(formData: FormData): Promise<ActionResponse> {
       }
     }
 
-    // Create new user
+    // Create a new user
     const user = await createUser(data.email, data.password)
     if (!user) {
       return {
@@ -145,7 +147,7 @@ export async function signUp(formData: FormData): Promise<ActionResponse> {
       }
     }
 
-    // Create session for the newly registered user
+    // Create a session for the newly registered user
     await createSession(user.id)
 
     return {

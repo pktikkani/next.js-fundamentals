@@ -9,8 +9,8 @@ import { ArrowLeftIcon, Edit2Icon } from 'lucide-react'
 import DeleteIssueButton from '../../components/DeleteIssueButton'
 
 export default async function IssuePage({
-  params,
-}: {
+                                          params,
+                                        }: {
   params: Promise<{ id: string }>
 }) {
   const { id } = await params

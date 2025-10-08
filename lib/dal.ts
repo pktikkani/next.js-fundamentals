@@ -4,14 +4,14 @@ import { eq } from 'drizzle-orm'
 import { cache } from 'react'
 import { issues, users } from '@/db/schema'
 import { mockDelay } from './utils'
-import { unstable_cacheTag as cacheTag } from 'next/cache'
 
 // Current user
 export const getCurrentUser = cache(async () => {
+  console.log('getting user')
   const session = await getSession()
   if (!session) return null
 
-  // Skip database query during prerendering if we don't have a session
+  // Skip the database query during prerendering if we don't have a session
   // hack until we have PPR https://nextjs.org/docs/app/building-your-application/rendering/partial-prerendering
   if (
     typeof window === 'undefined' &&
@@ -63,11 +63,14 @@ export async function getIssue(id: number) {
 }
 
 export async function getIssues() {
-  'use cache'
-  cacheTag('issues')
+  // 'use cache'
+  // cacheTag('issues')
+  // const currentUser = await getCurrentUser()
+  // if (!currentUser) return []
   try {
     await mockDelay(700)
     const result = await db.query.issues.findMany({
+      // where: eq(issues.userId, currentUser.id),
       with: {
         user: true,
       },

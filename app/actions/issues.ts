@@ -1,12 +1,13 @@
 'use server'
 
+// import { revalidateTag } from 'next/cache'
 import { db } from '@/db'
 import { issues } from '@/db/schema'
 import { eq } from 'drizzle-orm'
 import { getCurrentUser } from '@/lib/dal'
 import { z } from 'zod'
 import { mockDelay } from '@/lib/utils'
-import { revalidateTag } from 'next/cache'
+
 // Define Zod schema for issue validation
 const IssueSchema = z.object({
   title: z
@@ -38,7 +39,6 @@ export type ActionResponse = {
 export async function createIssue(data: IssueData): Promise<ActionResponse> {
   try {
     // Security check - ensure user is authenticated
-    await mockDelay(700)
     const user = await getCurrentUser()
     if (!user) {
       return {
@@ -68,8 +68,7 @@ export async function createIssue(data: IssueData): Promise<ActionResponse> {
       userId: validatedData.userId,
     })
 
-    revalidateTag('issues')
-
+    // revalidateTag('issues')
     return { success: true, message: 'Issue created successfully' }
   } catch (error) {
     console.error('Error creating issue:', error)

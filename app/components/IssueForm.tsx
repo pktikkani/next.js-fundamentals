@@ -13,7 +13,7 @@ import {
   FormSelect,
   FormError,
 } from './ui/Form'
-import { createIssue, updateIssue, ActionResponse } from '@/app/actions/issues'
+import { createIssue, ActionResponse, updateIssue } from '@/app/actions/issues'
 
 interface IssueFormProps {
   issue?: Issue
@@ -28,10 +28,10 @@ const initialState: ActionResponse = {
 }
 
 export default function IssueForm({
-  issue,
-  userId,
-  isEditing = false,
-}: IssueFormProps) {
+                                    issue,
+                                    userId,
+                                    isEditing = false,
+                                  }: IssueFormProps) {
   const router = useRouter()
 
   // Use useActionState hook for the form submission action
