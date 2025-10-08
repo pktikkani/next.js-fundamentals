@@ -42,3 +42,4 @@ next-env.d.ts
 linear.md
 node_modules
 .idea
+package-lock.json
