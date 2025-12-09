@@ -45,7 +45,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@vitejs/plugin-react": "^4.3.4",
-    "drizzle-kit": "^0.30.4",
+    "drizzle-kit": "^0.31.8",
     "eslint": "^9",
     "eslint-config-next": "15.6.0-canary.58",
     "jsdom": "^26.0.0",
